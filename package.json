@@ -1,0 +1,21 @@
+{
+  "name": "hexo-theme-stun-cli",
+  "version": "0.0.1",
+  "description": "Stun CLI is the Standard Tooling for «Stun» Theme.",
+  "homepage": "https://github.com/theme-stun/cli",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theme-stun/cli"
+  },
+  "keywords": [
+    "Hexo",
+    "Stun",
+    "CLI"
+  ],
+  "author": "liuyib",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theme-stun/cli/issues"
+  }
+}
