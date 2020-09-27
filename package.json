@@ -21,11 +21,28 @@
   "bugs": {
     "url": "https://github.com/theme-stun/cli/issues"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "packages/**/bin/*": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
     "lerna": "^3.22.1",
+    "lint-staged": "^10.4.0",
     "prettier": "^2.1.2"
   }
 }
