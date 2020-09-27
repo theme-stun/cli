@@ -1,6 +1,6 @@
 {
   "name": "@stun/cli-utils",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Shared utilities for stun-cli packages",
   "main": "index.js",
   "homepage": "https://github.com/theme-stun/cli",
