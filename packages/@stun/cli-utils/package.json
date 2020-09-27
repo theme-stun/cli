@@ -1,0 +1,26 @@
+{
+  "name": "@stun/cli-utils",
+  "version": "0.0.1",
+  "description": "Shared utilities for stun-cli packages",
+  "main": "index.js",
+  "homepage": "https://github.com/theme-stun/cli",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theme-stun/cli.git",
+    "directory": "packages/@stun/cli-utils"
+  },
+  "scripts": {},
+  "keywords": [
+    "Stun",
+    "CLI"
+  ],
+  "author": "liuyib",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theme-stun/cli/issues"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "semver": "^7.3.2"
+  }
+}

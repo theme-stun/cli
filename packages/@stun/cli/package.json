@@ -1,0 +1,30 @@
+{
+  "name": "@stun/cli",
+  "version": "0.0.1",
+  "description": "Command line interface for rapid «Stun» usage",
+  "homepage": "https://github.com/theme-stun/cli",
+  "bin": {
+    "stun": "./bin/stun.js"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theme-stun/cli.git",
+    "directory": "packages/@stun/cli"
+  },
+  "scripts": {},
+  "keywords": [
+    "Stun",
+    "CLI"
+  ],
+  "author": "liuyib",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theme-stun/cli/issues"
+  },
+  "dependencies": {
+    "commander": "^6.1.0"
+  }
+}
