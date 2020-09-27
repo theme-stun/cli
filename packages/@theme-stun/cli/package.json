@@ -1,6 +1,9 @@
 {
-  "name": "@stun/cli",
+  "name": "@theme-stun/cli",
   "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Command line interface for rapid «Stun» usage",
   "homepage": "https://github.com/theme-stun/cli",
   "bin": {
@@ -12,7 +15,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theme-stun/cli.git",
-    "directory": "packages/@stun/cli"
+    "directory": "packages/@theme-stun/cli"
   },
   "scripts": {},
   "keywords": [

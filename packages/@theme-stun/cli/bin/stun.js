@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// const { chalk, semver } = require("@stun/cli-utils");
+// const { chalk, semver } = require("@theme-stun/cli-utils");
 // const requiredNodeVersion = require("../package.json").engines.node;
 
 // // Check node version before requiring/doing anything else
@@ -17,7 +17,7 @@
 //   }
 // }
 
-// checkNodeVersion(requiredNodeVersion, "@stun/cli");
+// checkNodeVersion(requiredNodeVersion, "@theme-stun/cli");
 
 // const EOL_NODE_MAJORS = ["8.x", "9.x", "11.x", "13.x"];
 // for (const major of EOL_NODE_MAJORS) {
@@ -35,7 +35,7 @@
 const program = require('commander');
 
 program
-  .version(`@stun/cli ${require('../package.json').version}`, '-v, --version')
+  .version(`@theme-stun/cli ${require('../package.json').version}`, '-v, --version')
   .usage('<command> [options]');
 
 // program
