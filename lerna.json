@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/@stun/cli*"
+    "packages/@theme-stun/cli*"
   ],
   "version": "0.1.0"
 }

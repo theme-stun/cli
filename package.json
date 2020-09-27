@@ -1,8 +1,5 @@
 {
-  "name": "hexo-theme-stun-cli",
-  "version": "0.0.1",
-  "description": "Stun CLI is the Standard Tooling for «Stun» Theme.",
-  "homepage": "https://github.com/theme-stun/cli",
+  "private": true,
   "scripts": {
     "lint": "eslint packages/**/*.js packages/**/bin/*.js",
     "lint:fix": "eslint --fix packages/**/*.js packages/**/bin/*.js",
@@ -45,7 +42,7 @@
     "prettier": "^2.1.2"
   },
   "dependencies": {
-    "@stun/cli": "file:packages/@stun/cli",
-    "@stun/cli-utils": "file:packages/@stun/cli-utils"
+    "@theme-stun/cli": "file:packages/@theme-stun/cli",
+    "@theme-stun/cli-utils": "file:packages/@theme-stun/cli-utils"
   }
 }
