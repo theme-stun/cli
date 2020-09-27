@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Stun CLI is the Standard Tooling for «Stun» Theme.",
   "homepage": "https://github.com/theme-stun/cli",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint packages/**/*.js packages/**/bin/*.js",
+    "lint:fix": "eslint --fix packages/**/*.js packages/**/bin/*.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/theme-stun/cli"
@@ -17,5 +20,12 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/theme-stun/cli/issues"
+  },
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "lerna": "^3.22.1",
+    "prettier": "^2.1.2"
   }
 }
