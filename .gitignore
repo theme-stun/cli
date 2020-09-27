@@ -2,3 +2,4 @@ node_modules/
 dist/
 .vuepress/dist
 package-lock.json
+lerna-debug.log

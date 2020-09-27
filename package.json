@@ -5,7 +5,8 @@
   "homepage": "https://github.com/theme-stun/cli",
   "scripts": {
     "lint": "eslint packages/**/*.js packages/**/bin/*.js",
-    "lint:fix": "eslint --fix packages/**/*.js packages/**/bin/*.js"
+    "lint:fix": "eslint --fix packages/**/*.js packages/**/bin/*.js",
+    "release": "lerna publish"
   },
   "repository": {
     "type": "git",

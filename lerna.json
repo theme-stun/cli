@@ -1,0 +1,6 @@
+{
+  "packages": [
+    "packages/@stun/cli*"
+  ],
+  "version": "0.0.1"
+}
