@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "style": "prettier --write **/*.js",
     "lint": "eslint packages/**/*.js packages/**/bin/*.js",
     "lint:fix": "eslint --fix packages/**/*.js packages/**/bin/*.js",
     "release": "lerna publish"
@@ -21,7 +22,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run style && lint-staged"
     }
   },
   "lint-staged": {
