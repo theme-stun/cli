@@ -1,5 +1,7 @@
 const chalk = require('chalk');
 
-exports.log = (info) => console.log(`${info ? chalk.green(info) : ''}`);
+exports.log = {
+  info: (val) => console.log(`${val ? chalk.green(val) : ''}`),
 
-exports.error = (error) => console.log(`${error ? chalk.green(error) : ''}`);
+  error: (val) => console.log(`${val ? chalk.red(val) : ''}`),
+};
