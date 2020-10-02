@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-const { semver, log } = require('@theme-stun/cli-utils');
+const { chalk, semver, log } = require('@theme-stun/cli-utils');
 const requiredNodeVersion = require('../package.json').engines.node;
+const leven = require('leven');
 
 // Check node version before requiring/doing anything else
 // The user may be on a very old node version
@@ -40,5 +41,32 @@ program
   .description('create a new «Stun» project from a remote repository')
   .action(require('../lib/init').initConfig);
 
+program.arguments('[command]').action((cmd) => {
+  if (cmd) {
+    program.outputHelp();
+    log.error();
+    log.error(`Unknown command ${chalk.yellow(cmd)}`);
+    suggestCommands(cmd);
+  }
+});
+
 // Parse the parameters
 program.parse(process.argv);
+
+function suggestCommands(unknownCommand) {
+  const availableCommands = program.commands.map((cmd) => cmd._name);
+  let suggestion;
+
+  availableCommands.forEach((cmd) => {
+    const isBestMatch = leven(cmd, unknownCommand) < leven(suggestion || '', unknownCommand);
+
+    if (leven(cmd, unknownCommand) < 3 && isBestMatch) {
+      suggestion = cmd;
+    }
+  });
+
+  if (suggestion) {
+    log.info();
+    log.info(`Did you mean ${chalk.yellow(suggestion)}?`);
+  }
+}
