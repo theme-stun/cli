@@ -1,32 +1,27 @@
-const fs = require('fs');
+const fse = require('fs-extra');
 const path = require('path');
 const enquirer = require('enquirer');
-const { log } = require('@theme-stun/cli-utils');
+const { chalk, log } = require('@theme-stun/cli-utils');
 const { clone } = require('./util/fetchRemote');
 
-function processAnswers(answers) {
-  let config = {
-    folder: './themes/stun/',
-    isExistFolder: false,
-    isOverride: false,
+function mergeConfig(answers) {
+  const config = {
+    dir: './themes/stun/',
   };
 
-  config.folder = answers.folderCustom || answers.folderName;
-  config.isOverride = answers.isOverride || false;
+  if (answers) {
+    config.dir = answers.dirCustom || answers.dirName;
+  }
 
   return config;
 }
 
-function hasTargetFolder(folder) {
-  return fs.existsSync(path.resolve(folder));
-}
-
-function promptUser() {
+async function promptUser() {
   return enquirer
     .prompt([
       {
         type: 'select',
-        name: 'folderName',
+        name: 'dirName',
         message: 'Where are the project files generated?',
         choices: [
           { message: './themes/stun/', name: './themes/stun/' },
@@ -36,47 +31,52 @@ function promptUser() {
       },
       {
         type: 'input',
-        name: 'folderCustom',
+        name: 'dirCustom',
         message: 'Where do you want to generate the project? Please enter:',
         skip() {
           // `this.state` is the built-in attribute of Enquirer
-          return this.state.answers.folderName !== 'auto';
+          return this.state.answers.dirName !== 'auto';
         },
       },
     ])
     .then(async (answers) => {
-      const config = processAnswers(answers);
+      const config = mergeConfig(answers);
+      const targetDir = path.resolve(config.dir);
 
-      if (hasTargetFolder(config.folder)) {
-        config.isExistFolder = true;
+      if (fse.existsSync(targetDir)) {
+        const { isOverwrite } = await enquirer.prompt([
+          {
+            type: 'toggle',
+            name: 'isOverwrite',
+            message: `Target directory ${chalk.cyan(targetDir)} already exists. Overwrite it?`,
+            enabled: 'Yes',
+            disabled: 'No',
+          },
+        ]);
+
+        if (isOverwrite) {
+          log.info(`Removing ${chalk.cyan(targetDir)} ...`);
+          await fse.remove(targetDir);
+          log.info('Remove done!');
+        } else {
+          log.error(`✘ Target directory ${chalk.cyan(targetDir)} already exists, command exit.`);
+          return false;
+        }
       }
 
-      if (config.isExistFolder) {
-        await enquirer
-          .prompt([
-            {
-              type: 'toggle',
-              name: 'isOverride',
-              message: `The '${config.folder}' directory already exists. Overwrite it?`,
-              enabled: 'Yes',
-              disabled: 'No',
-            },
-          ])
-          .then((ans) => {
-            config.isOverride = ans.isOverride;
-          });
-      }
+      log.info(`Creating project in ${chalk.yellow(targetDir)}.`);
 
-      if (!config.isExistFolder || config.isOverride) {
-        log.info(`Creating project, please wait...`);
+      await clone('github:liuyib/hexo-theme-stun', targetDir);
 
-        await clone('github:liuyib/hexo-theme-stun', config.folder);
-      } else {
-        log.error(`✘ The '${config.folder}' directory already exists, program exits.`);
-      }
+      log.succ(`√ Successfully created project. Enjoy yourself :)`);
     })
     .catch((error) => {
-      console.log(`promptUser -> error`, error);
+      const { version } = require('../package.json');
+      const errorMessage = error ? `\n\n${error}\n` : '';
+
+      log.error(`\nOops! Something went wrong! :(\n@theme-stun/cli ${chalk.yellow(version)}`);
+      log.error(`${errorMessage}`);
+      process.exit(1);
     });
 }
 

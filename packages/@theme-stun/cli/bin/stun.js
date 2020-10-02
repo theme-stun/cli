@@ -96,7 +96,6 @@ function suggestCommands(unknownCommand) {
   });
 
   if (suggestion) {
-    log.info(`Did you mean ${chalk.yellow(suggestion)}?`);
-    log.info();
+    log.succ(`Did you mean ${chalk.yellow(suggestion)}?\n`);
   }
 }
