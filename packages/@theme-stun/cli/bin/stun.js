@@ -53,6 +53,11 @@ program.arguments('[command]').action((cmd) => {
 // Parse the parameters
 program.parse(process.argv);
 
+// Just run `stun`, no subcommands or options
+if (!process.argv.slice(2).length) {
+  program.outputHelp();
+}
+
 function suggestCommands(unknownCommand) {
   const availableCommands = program.commands.map((cmd) => cmd._name);
   let suggestion;
