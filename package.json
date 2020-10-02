@@ -1,9 +1,14 @@
 {
+  "name": "hexo-theme-stun-cli",
   "private": true,
   "scripts": {
     "style": "prettier --write **/*.js",
     "lint": "eslint packages/**/*.js packages/**/bin/*.js",
     "lint:fix": "eslint --fix packages/**/*.js packages/**/bin/*.js",
+    "lerna:rmlock": "rm -rf ./packages/**/**/package-lock.json ./packages/**/**/node_modules",
+    "lerna:convert": "lerna link convert",
+    "lerna:install": "npm i",
+    "prerelease": "npm run lerna:rmlock && npm run lerna:convert && npm run lerna:install",
     "release": "lerna publish"
   },
   "repository": {
