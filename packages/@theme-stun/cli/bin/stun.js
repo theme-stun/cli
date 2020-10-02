@@ -39,7 +39,7 @@ program
 program
   .command('create')
   .description('create a new «Stun» project from a remote repository')
-  .action(require('../lib/init').initConfig);
+  .action(require('../lib/create').initConfig);
 
 program.arguments('[command]').action((cmd) => {
   if (cmd) {
@@ -96,7 +96,7 @@ function suggestCommands(unknownCommand) {
   });
 
   if (suggestion) {
-    log.info();
     log.info(`Did you mean ${chalk.yellow(suggestion)}?`);
+    log.info();
   }
 }
