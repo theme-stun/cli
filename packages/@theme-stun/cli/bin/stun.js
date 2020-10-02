@@ -34,7 +34,7 @@ const program = require('commander');
 
 program
   .version(`@theme-stun/cli ${require('../package.json').version}`, '-v, --version')
-  .usage('[command] [options]');
+  .usage('<command> [options]');
 
 program
   .command('create')
@@ -44,8 +44,8 @@ program
 program.arguments('[command]').action((cmd) => {
   if (cmd) {
     program.outputHelp();
-    log.error();
     log.error(`Unknown command ${chalk.yellow(cmd)}`);
+    log.error();
     suggestCommands(cmd);
   }
 });
@@ -53,6 +53,26 @@ program.arguments('[command]').action((cmd) => {
 program.on('--help', () => {
   log.info();
   log.info(`Run ${chalk.cyan(`stun <command> -h(--help)`)} for detailed usage of given command.`);
+  log.info();
+});
+
+program.commands.forEach((c) => c.on('--help', () => log.info()));
+
+const errorMessages = require('../lib/util/errorMessages');
+
+errorMessages('missingArgument', (argName) => {
+  return `Missing required argument ${chalk.yellow(`<${argName}>`)}`;
+});
+
+errorMessages('unknownOption', (optionName) => {
+  return `Unknown option ${chalk.yellow(optionName)}.`;
+});
+
+errorMessages('optionMissingArgument', (option, flag) => {
+  return (
+    `Missing required argument for option ${chalk.yellow(option.flags)}` +
+    (flag ? `, got ${chalk.yellow(flag)}` : ``)
+  );
 });
 
 // Parse the parameters

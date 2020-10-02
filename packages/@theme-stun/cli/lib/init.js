@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const enquirer = require('enquirer');
 const { log } = require('@theme-stun/cli-utils');
-const { clone } = require('./fetchRemote');
+const { clone } = require('./util/fetchRemote');
 
 function processAnswers(answers) {
   let config = {
