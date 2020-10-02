@@ -33,12 +33,12 @@ const program = require('commander');
 
 program
   .version(`@theme-stun/cli ${require('../package.json').version}`, '-v, --version')
-  .usage('<command> [options]')
-  .option(
-    '-i, --init',
-    'generate «Stun» theme from a remote repository',
-    require('../lib/init').initConfig(),
-  );
+  .usage('[command] [options]');
+
+program
+  .command('create')
+  .description('create a new «Stun» project from a remote repository')
+  .action(require('../lib/init').initConfig);
 
 // Parse the parameters
 program.parse(process.argv);
