@@ -50,6 +50,11 @@ program.arguments('[command]').action((cmd) => {
   }
 });
 
+program.on('--help', () => {
+  log.info();
+  log.info(`Run ${chalk.cyan(`stun <command> -h(--help)`)} for detailed usage of given command.`);
+});
+
 // Parse the parameters
 program.parse(process.argv);
 
