@@ -48,7 +48,7 @@
     "prettier": "^2.1.2"
   },
   "dependencies": {
-    "@theme-stun/cli": "file:packages/@theme-stun/cli",
-    "@theme-stun/cli-utils": "file:packages/@theme-stun/cli-utils"
+    "@theme-stun/cli": "file:packages\\@theme-stun\\cli",
+    "@theme-stun/cli-utils": "file:packages\\@theme-stun\\cli-utils"
   }
 }
