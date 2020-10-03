@@ -38,7 +38,7 @@ program
 
 program
   .command('create')
-  .description('create a new «Stun» project from a remote repository')
+  .description('create a new <Stun> project from a remote repository')
   .action(require('../lib/create').initConfig);
 
 program.arguments('[command]').action((cmd) => {

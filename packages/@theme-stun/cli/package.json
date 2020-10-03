@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "Command line interface for rapid «Stun» usage",
+  "description": "Command line interface for rapid <Stun> usage",
   "homepage": "https://github.com/theme-stun/cli",
   "bin": {
     "stun": "./bin/stun.js"
