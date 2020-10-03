@@ -8,7 +8,8 @@
     "lerna:rmlock": "rm -rf ./packages/**/**/package-lock.json ./packages/**/**/node_modules",
     "lerna:install": "npm i",
     "prerelease": "npm run lerna:rmlock && npm run lerna:install",
-    "release": "lerna publish"
+    "release": "lerna publish",
+    "release:force": "lerna publish --force-publish *"
   },
   "repository": {
     "type": "git",
